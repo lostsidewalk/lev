@@ -32,8 +32,8 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/meharris-bnr/lev")
             credentials {
-                username = project.findProperty("publishing.user") ?: System.getenv("SKYPROC_PUBLISHING_USERNAME")
-                password = project.findProperty("publishing.token") ?: System.getenv("SKYPROC_PUBLISHING_TOKEN")
+                username = project.findProperty("publishing.user") ?: System.getenv("LEV_PUBLISHING_USER")
+                password = project.findProperty("publishing.token") ?: System.getenv("LEV_PUBLISHING_TOKEN")
             }
         }
     }
