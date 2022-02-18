@@ -1,0 +1,45 @@
+
+plugins {
+    id 'java-library'
+
+    id 'maven-publish'
+}
+
+group = 'com.lostsidewalk'
+version = '1.2'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    api 'org.apache.commons:commons-math3:3.6.1'
+
+    implementation 'com.google.guava:guava:31.0.1-jre'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/meharris-bnr/lev")
+            credentials {
+                username = project.findProperty("publishing.user") ?: System.getenv("SKYPROC_PUBLISHING_USERNAME")
+                password = project.findProperty("publishing.token") ?: System.getenv("SKYPROC_PUBLISHING_TOKEN")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
