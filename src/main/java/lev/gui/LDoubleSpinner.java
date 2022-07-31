@@ -9,7 +9,7 @@ import java.util.Map;
 
 @SuppressWarnings("unused")
 public class LDoubleSpinner extends LUserSetting<Double> {
-    protected JSpinner spinner;
+    protected final JSpinner spinner;
 
     public LDoubleSpinner(String title, double init, double min, double max, double step, int width) {
         super(title);

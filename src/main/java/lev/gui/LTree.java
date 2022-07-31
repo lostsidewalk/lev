@@ -7,10 +7,10 @@ import javax.swing.tree.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.Iterator;
 
+@SuppressWarnings("unused")
 public class LTree extends JTree {
-    protected DefaultTreeModel model;
+    protected final DefaultTreeModel model;
     String state;
 
     public LTree(int width, int height) {
@@ -45,7 +45,7 @@ public class LTree extends JTree {
     }
 
     public ArrayList<Integer> getExpandedRows() {
-        ArrayList<Integer> out = new ArrayList();
+        ArrayList<Integer> out = new ArrayList<>();
 
         for (int i = 0; i < this.getRowCount(); ++i) {
             TreePath path = this.getPathForRow(i);
@@ -58,14 +58,11 @@ public class LTree extends JTree {
     }
 
     public void expandRows(ArrayList<Integer> rows) {
-        Iterator i$ = rows.iterator();
 
-        while (i$.hasNext()) {
-            int i = (Integer) i$.next();
+        for (int i : rows) {
             TreePath path = this.getPathForRow(i);
             this.expandPath(path);
         }
-
     }
 
     public TreeNode getRoot() {
@@ -77,11 +74,11 @@ public class LTree extends JTree {
     }
 
     public ArrayList<Integer> rootRows() {
-        ArrayList<Integer> out = new ArrayList();
+        ArrayList<Integer> out = new ArrayList<>();
         TreePath rootPath = new TreePath(this.getRoot());
         TreeNode root = (TreeNode) rootPath.getLastPathComponent();
         if (root.getChildCount() >= 0) {
-            Enumeration e = root.children();
+            Enumeration<?> e = root.children();
 
             while (e.hasMoreElements()) {
                 TreeNode n = (TreeNode) e.nextElement();

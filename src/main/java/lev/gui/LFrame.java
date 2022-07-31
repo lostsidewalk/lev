@@ -7,7 +7,7 @@ import java.awt.*;
 public class LFrame extends JFrame {
     private static final int marginX = 16;
     private static final int marginY = 38;
-    protected LImagePane background;
+    protected final LImagePane background;
     private boolean init = false;
 
     public LFrame(String title) {

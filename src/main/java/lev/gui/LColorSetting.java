@@ -9,10 +9,10 @@ import java.util.Map;
 
 @SuppressWarnings("unused")
 public class LColorSetting extends LUserSetting<Color> {
-    protected Rectangle box = new Rectangle(0, 0, 12, 12);
-    protected Rectangle boxOutline;
+    protected final Rectangle box = new Rectangle(0, 0, 12, 12);
+    protected final Rectangle boxOutline;
     protected Color color;
-    protected ArrayList<Runnable> actionListeners = new ArrayList<>(0);
+    protected final ArrayList<Runnable> actionListeners = new ArrayList<>(0);
 
     public LColorSetting(String text, Font font, Color fontColor, Color pickerStart) {
         super(text, font, fontColor);

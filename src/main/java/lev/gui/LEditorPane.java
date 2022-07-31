@@ -7,7 +7,7 @@ import java.awt.*;
 
 @SuppressWarnings("unused")
 public class LEditorPane extends LComponent {
-    protected JEditorPane pane = new JEditorPane();
+    protected final JEditorPane pane = new JEditorPane();
 
     public LEditorPane() {
         this.pane.setEditable(false);

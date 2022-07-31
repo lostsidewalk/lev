@@ -2,8 +2,8 @@ package lev.gui;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.util.ArrayList;
-import java.util.Iterator;
 
+@SuppressWarnings("unused")
 public class LSwingTreeNode extends DefaultMutableTreeNode {
     public LSwingTreeNode() {
     }
@@ -14,10 +14,8 @@ public class LSwingTreeNode extends DefaultMutableTreeNode {
 
     public LSwingTreeNode get(LSwingTreeNode node) {
         if (this.children != null) {
-            Iterator i$ = this.children.iterator();
 
-            while (i$.hasNext()) {
-                Object rhs = i$.next();
+            for (Object rhs : this.children) {
                 if (node.equals(rhs)) {
                     return (LSwingTreeNode) rhs;
                 }
@@ -32,15 +30,14 @@ public class LSwingTreeNode extends DefaultMutableTreeNode {
     }
 
     public ArrayList<LSwingTreeNode> getAllObjects(boolean recursive) {
-        ArrayList<LSwingTreeNode> out = new ArrayList();
+        ArrayList<LSwingTreeNode> out = new ArrayList<>();
         if (this.children != null) {
-            Iterator i$ = this.children.iterator();
 
-            while (i$.hasNext()) {
-                Object o = i$.next();
+            for (Object o : this.children) {
                 LSwingTreeNode n = (LSwingTreeNode) o;
                 out.add(n);
                 if (recursive) {
+                    //noinspection ConstantConditions
                     out.addAll(n.getAllObjects(recursive));
                 }
             }
@@ -50,32 +47,21 @@ public class LSwingTreeNode extends DefaultMutableTreeNode {
     }
 
     public void print(int depth) {
-        Iterator i$ = this.getAllObjects().iterator();
 
-        while (i$.hasNext()) {
-            Object o = i$.next();
-            if (o instanceof LSwingTreeNode) {
-                LSwingTreeNode n = (LSwingTreeNode) o;
-                n.print(depth + 1);
-            }
+        for (LSwingTreeNode n : this.getAllObjects()) {
+            n.print(depth + 1);
         }
-
     }
 
     public void mergeIn(LSwingTreeNode node) {
         LSwingTreeNode existing = this.get(node);
         if (existing != null) {
-            Iterator i$ = node.getAllObjects().iterator();
 
-            while (i$.hasNext()) {
-                Object o = i$.next();
-                if (o instanceof LSwingTreeNode) {
-                    existing.mergeIn((LSwingTreeNode) o);
-                }
+            for (LSwingTreeNode lSwingTreeNode : node.getAllObjects()) {
+                existing.mergeIn(lSwingTreeNode);
             }
         } else {
             this.add(node);
         }
-
     }
 }

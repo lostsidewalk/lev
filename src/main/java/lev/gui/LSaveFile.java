@@ -11,13 +11,13 @@ import java.util.TreeMap;
 @SuppressWarnings("unused")
 public abstract class LSaveFile {
     protected File location;
-    protected ArrayList<Map<Enum<?>, Setting<?>>> maps;
-    protected Map<Enum<?>, Setting<?>> defaultSettings;
-    protected Map<Enum<?>, Setting<?>> saveSettings;
-    protected Map<Enum<?>, Setting<?>> curSettings;
-    protected Map<Enum<?>, Setting<?>> cancelSave;
-    protected Map<Enum<?>, Setting<?>> peekSave;
-    protected Map<Enum<?>, String> helpInfo;
+    protected final ArrayList<Map<Enum<?>, Setting<?>>> maps;
+    protected final Map<Enum<?>, Setting<?>> defaultSettings;
+    protected final Map<Enum<?>, Setting<?>> saveSettings;
+    protected final Map<Enum<?>, Setting<?>> curSettings;
+    protected final Map<Enum<?>, Setting<?>> cancelSave;
+    protected final Map<Enum<?>, Setting<?>> peekSave;
+    protected final Map<Enum<?>, String> helpInfo;
     protected boolean initialized;
 
     private LSaveFile() {

@@ -8,7 +8,7 @@ import java.awt.*;
 
 @SuppressWarnings("unused")
 public class LProgressBar extends LComponent implements LProgressBarInterface {
-    protected JProgressBar bar;
+    protected final JProgressBar bar;
     protected boolean pause;
     protected LLabel status;
     protected boolean centered = true;

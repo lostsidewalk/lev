@@ -11,8 +11,8 @@ import java.util.Enumeration;
 
 @SuppressWarnings("unused")
 public class LFileTree {
-    protected DefaultTreeModel tree;
-    protected DefaultMutableTreeNode root = new DefaultMutableTreeNode("");
+    protected final DefaultTreeModel tree;
+    protected final DefaultMutableTreeNode root = new DefaultMutableTreeNode("");
 
     public LFileTree() {
         this.tree = new DefaultTreeModel(this.root);

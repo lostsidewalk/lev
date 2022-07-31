@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 @SuppressWarnings("unused")
 public class LMergeList<T extends LMergable> implements Iterable<T> {
-    ArrayList<T> list = new ArrayList<>();
+    final ArrayList<T> list = new ArrayList<>();
 
     public LMergeList() {
     }

@@ -13,9 +13,9 @@ import java.util.ArrayList;
 
 @SuppressWarnings("unused")
 public class LAreaChart extends LChart {
-    public XYPlot plot;
-    ArrayList<XYSeries> series = new ArrayList<>();
-    XYSeriesCollection collection = new XYSeriesCollection();
+    public final XYPlot plot;
+    final ArrayList<XYSeries> series = new ArrayList<>();
+    final XYSeriesCollection collection = new XYSeriesCollection();
 
     public LAreaChart(String title_, Dimension size_, Color titleColor, Color seriesColor, String XLabel, String YLabel) {
         super(title_, size_);

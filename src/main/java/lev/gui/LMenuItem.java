@@ -6,7 +6,7 @@ import java.awt.event.MouseListener;
 
 @SuppressWarnings("unused")
 public class LMenuItem extends LHelpComponent {
-    protected JMenuItem menuItem;
+    protected final JMenuItem menuItem;
 
     public LMenuItem(String title_) {
         super(title_);

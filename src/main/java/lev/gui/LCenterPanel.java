@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class LCenterPanel extends LPanel {
-    protected ArrayList<Component> components = new ArrayList<>();
+    protected final ArrayList<Component> components = new ArrayList<>();
 
     public LCenterPanel() {
     }

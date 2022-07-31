@@ -4,16 +4,16 @@ import java.awt.*;
 
 @SuppressWarnings("unused")
 public class LHelpPanel extends LPanel {
-    protected LLabel setting;
-    protected LTextPane help;
-    protected Image arrow;
-    protected int arrowX;
+    protected final LLabel setting;
+    protected final LTextPane help;
+    protected final Image arrow;
+    protected final int arrowX;
     protected int y = -100;
     protected int textOffset = 0;
-    protected LPanel bottomArea;
+    protected final LPanel bottomArea;
     protected boolean textVisible = true;
     protected boolean hideArrow = false;
-    protected boolean following = true;
+    protected final boolean following = true;
 
     public LHelpPanel(Rectangle bounds, Font titleFont, Color titleC, Color contentC, Image arrow, int arrowX) {
         this.arrowX = arrowX;

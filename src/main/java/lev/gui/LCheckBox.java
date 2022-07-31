@@ -13,8 +13,8 @@ import java.util.Map;
 
 @SuppressWarnings("unused")
 public class LCheckBox extends LUserSetting<Boolean> {
-    protected JCheckBox cbox;
-    protected ArrayList<LComponent> underlings = new ArrayList<>(0);
+    protected final JCheckBox cbox;
+    protected final ArrayList<LComponent> underlings = new ArrayList<>(0);
 
     public LCheckBox(String text, Font font, Color shade) {
         super(text, font, shade);

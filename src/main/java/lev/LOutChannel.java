@@ -12,8 +12,8 @@ import java.util.Stack;
 public class LOutChannel extends LExport {
     FileOutputStream out;
     FileChannel channel;
-    Stack<LengthPair> lengthStackTracker = new Stack<>();
-    ArrayList<LengthPair> posQueueTracker = new ArrayList<>();
+    final Stack<LengthPair> lengthStackTracker = new Stack<>();
+    final ArrayList<LengthPair> posQueueTracker = new ArrayList<>();
 
     public LOutChannel(String path) throws FileNotFoundException {
         super(path);
@@ -82,8 +82,8 @@ public class LOutChannel extends LExport {
     }
 
     static class LengthPair {
-        long pos;
-        int size;
+        final long pos;
+        final int size;
 
         LengthPair(long posi, int sizei) {
             this.pos = posi;

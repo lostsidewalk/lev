@@ -8,8 +8,8 @@ import java.util.Map;
 
 @SuppressWarnings("unused")
 public class LCheckBoxConfig extends LUserSetting<Boolean> {
-    public static String buttonText = "Open";
-    public static int spacing = 18;
+    public static final String buttonText = "Open";
+    public static final int spacing = 18;
     protected LSpecialCheckBox cbox;
     protected LButton button;
 
@@ -91,7 +91,7 @@ public class LCheckBoxConfig extends LUserSetting<Boolean> {
     }
 
     protected static class LSpecialCheckBox extends LCheckBox {
-        LHelpComponent forwardTo;
+        final LHelpComponent forwardTo;
 
         public LSpecialCheckBox(String text, Font font, Color shade, LHelpComponent forwardTo_) {
             super(text, font, shade);

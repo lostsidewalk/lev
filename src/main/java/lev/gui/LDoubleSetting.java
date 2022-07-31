@@ -7,7 +7,7 @@ import java.util.Map;
 
 @SuppressWarnings("unused")
 public class LDoubleSetting extends LUserSetting<Double> {
-    protected LDoubleSpinner setting;
+    protected final LDoubleSpinner setting;
 
     public LDoubleSetting(String text, Font font, Color c, double min, double max, double step) {
         super(text, font, c);

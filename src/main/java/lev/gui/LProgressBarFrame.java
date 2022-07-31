@@ -8,10 +8,10 @@ import java.awt.*;
 
 @SuppressWarnings("unused")
 public class LProgressBarFrame extends JFrame implements LProgressBarInterface {
-    protected LProgressBar bar;
+    protected final LProgressBar bar;
     protected LLabel title;
     protected Dimension correctLocation = new Dimension(0, 0);
-    protected Dimension GUIsize = new Dimension(250, 100);
+    protected final Dimension GUIsize = new Dimension(250, 100);
     protected LImagePane backgroundPanel;
     protected JFrame guiRef;
 

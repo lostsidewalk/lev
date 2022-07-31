@@ -1,8 +1,8 @@
 package lev;
 
 public class LPair<A, B> {
-    public A a;
-    public B b;
+    public final A a;
+    public final B b;
 
     public LPair(A a, B b) {
         this.a = a;

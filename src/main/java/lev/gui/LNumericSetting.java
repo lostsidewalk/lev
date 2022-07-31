@@ -7,7 +7,7 @@ import java.util.Map;
 
 @SuppressWarnings("unused")
 public class LNumericSetting extends LUserSetting<Integer> {
-    protected LSpinner setting;
+    protected final LSpinner setting;
 
     public LNumericSetting(String text, Font font, Color c, int min, Integer max, int step) {
         super(text, font, c);

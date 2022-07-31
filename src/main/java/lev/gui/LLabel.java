@@ -5,11 +5,11 @@ import java.awt.*;
 
 @SuppressWarnings("unused")
 public class LLabel extends LComponent {
-    protected JLabel mainText;
+    protected final JLabel mainText;
     protected JLabel shadow;
     protected JLabel shadow2;
     protected JLabel shadow3;
-    protected int shadowSpacing = 2;
+    protected final int shadowSpacing = 2;
 
     public LLabel(String text, Font font, Color c) {
         this.mainText = new JLabel(text);

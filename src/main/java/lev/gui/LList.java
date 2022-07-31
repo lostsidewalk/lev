@@ -10,9 +10,9 @@ import java.util.*;
 @SuppressWarnings("unused")
 public class LList<T> extends LHelpComponent implements Iterable<T> {
     protected static int spacing = 15;
-    protected DefaultListModel<T> model = new DefaultListModel<>();
-    protected JList<T> list;
-    protected JScrollPane scroll;
+    protected final DefaultListModel<T> model = new DefaultListModel<>();
+    protected final JList<T> list;
+    protected final JScrollPane scroll;
     protected boolean unique;
     protected Comparator<T> compare;
 

@@ -8,7 +8,7 @@ import java.awt.event.MouseListener;
 import java.util.Map;
 
 public class LSpinner extends LUserSetting<Integer> {
-    protected JSpinner spinner;
+    protected final JSpinner spinner;
 
     public LSpinner(String title, int init, int min, int max, int step, int width) {
         super(title);
@@ -55,14 +55,11 @@ public class LSpinner extends LUserSetting<Integer> {
 
             editor.getTextField().addMouseListener(m);
             Component[] arr$ = this.spinner.getComponents();
-            int len$ = arr$.length;
 
-            for (int i$ = 0; i$ < len$; ++i$) {
-                Component c = arr$[i$];
+            for (Component c : arr$) {
                 c.addMouseListener(m);
             }
         }
-
     }
 
     public synchronized void addFocusListener(FocusListener arg0) {

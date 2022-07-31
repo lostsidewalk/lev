@@ -8,8 +8,8 @@ import java.util.logging.Logger;
 
 public class LTextPane extends LComponent {
     protected JScrollPane scroll;
-    protected JTextPane pane;
-    protected Document doc;
+    protected final JTextPane pane;
+    protected final Document doc;
 
     public LTextPane(Color c) {
         this();
@@ -55,8 +55,7 @@ public class LTextPane extends LComponent {
     public int getHeight(int width) {
         View v = this.pane.getUI().getRootView(this.pane);
         v.setSize((float) width, 2.14748365E9F);
-        int preferredHeight = (int) v.getPreferredSpan(1);
-        return preferredHeight;
+        return (int) v.getPreferredSpan(1);
     }
 
     public void setForeground(Color c) {

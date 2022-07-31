@@ -1,24 +1,21 @@
 package lev.gui;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class SaveStringList extends Setting<ArrayList<String>> {
-    static String delimiter = "<#>";
+    static final String delimiter = "<#>";
 
     public SaveStringList(String title_, ArrayList<String> data_, Boolean[] extraFlags) {
         super(title_, data_, extraFlags);
     }
 
     public String toString() {
-        String out = "";
+        StringBuilder out = new StringBuilder();
         int num = 0;
-        Iterator i$ = ((ArrayList) this.data).iterator();
 
-        while (i$.hasNext()) {
-            String f = (String) i$.next();
+        for (String f : this.data) {
             if (!f.equals("")) {
-                out = out + f + delimiter + "\n";
+                out.append(f).append(delimiter).append("\n");
                 ++num;
             }
         }
@@ -28,7 +25,7 @@ public class SaveStringList extends Setting<ArrayList<String>> {
 
     public void parse(String in) {
         String[] split = in.split(delimiter);
-        this.data = new ArrayList(split.length);
+        this.data = new ArrayList<>(split.length);
 
         for (int i = 0; i < split.length; ++i) {
             split[i] = split[i].trim();
@@ -41,7 +38,7 @@ public class SaveStringList extends Setting<ArrayList<String>> {
 
     public Setting<ArrayList<String>> copyOf() {
         SaveStringList out = new SaveStringList(this.title, this.data, this.extraFlags);
-        out.data = new ArrayList(this.data);
+        out.data = new ArrayList<>(this.data);
         out.tie = this.tie;
         return out;
     }

@@ -9,8 +9,8 @@ import java.util.logging.Logger;
 
 public class LTextArea extends LComponent {
     protected JScrollPane scroll;
-    protected JTextArea area;
-    protected Document doc;
+    protected final JTextArea area;
+    protected final Document doc;
 
     public LTextArea(Dimension size_, Color c) {
         this(c);

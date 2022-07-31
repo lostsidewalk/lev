@@ -6,7 +6,7 @@ import java.awt.*;
 import java.util.Map;
 
 public class LSlider extends LUserSetting<Integer> {
-    protected JSlider slider;
+    protected final JSlider slider;
 
     public LSlider(String title, Font font, Color c, int min, int max, int cur) {
         super(title, font, c);

@@ -66,11 +66,7 @@ public abstract class LUserSetting<T> extends LHelpComponent {
         }
 
         public void caretUpdate(CaretEvent event) {
-            SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    LUserSetting.this.update();
-                }
-            });
+            SwingUtilities.invokeLater(LUserSetting.this::update);
         }
     }
 

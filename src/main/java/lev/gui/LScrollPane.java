@@ -17,11 +17,7 @@ public class LScrollPane extends JScrollPane {
     }
 
     public final void scrollToTop() {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                LScrollPane.this.getVerticalScrollBar().setValue(0);
-            }
-        });
+        SwingUtilities.invokeLater(() -> LScrollPane.this.getVerticalScrollBar().setValue(0));
     }
 
     public void setVisible(boolean on) {

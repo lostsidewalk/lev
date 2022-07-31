@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.util.*;
 
 public class SortedListModel<T> extends AbstractListModel {
-    protected SortedSet<T> model = new TreeSet();
+    protected final SortedSet<T> model = new TreeSet();
 
     public SortedListModel() {
     }

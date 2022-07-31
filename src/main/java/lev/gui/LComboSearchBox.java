@@ -13,9 +13,9 @@ import java.util.TreeSet;
 
 @SuppressWarnings("unused")
 public class LComboSearchBox<T> extends LComboBox<T> {
-    static String searchText = "Search...";
-    protected Set<T> backup = new TreeSet<>();
-    protected JTextField search = new JTextField();
+    static final String searchText = "Search...";
+    protected final Set<T> backup = new TreeSet<>();
+    protected final JTextField search = new JTextField();
     protected LButton enterButton;
     protected LComboSearchBox<T>.FilterWorker worker = new FilterWorker("");
 
@@ -140,7 +140,7 @@ public class LComboSearchBox<T> extends LComboBox<T> {
     }
 
     class FilterWorker extends SwingWorker<Integer, Integer> {
-        String filter;
+        final String filter;
 
         FilterWorker(String s) {
             this.filter = s;

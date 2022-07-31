@@ -1,5 +1,6 @@
 package lev;
 
+@SuppressWarnings("unused")
 public class LByteChannel extends LImport {
     byte[] input;
     int pos;
@@ -57,9 +58,7 @@ public class LByteChannel extends LImport {
     public byte[] extract(int read) {
         byte[] out = new byte[read];
 
-        for (int i = 0; i < read; ++i) {
-            out[i] = this.input[this.pos + i];
-        }
+        System.arraycopy(this.input, this.pos, out, 0, read);
 
         this.skip(read);
         return out;

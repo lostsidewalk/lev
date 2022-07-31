@@ -8,7 +8,7 @@ import java.awt.event.MouseListener;
 
 @SuppressWarnings("unused")
 public class LButton extends LHelpComponent {
-    protected JButton button;
+    protected final JButton button;
 
     public LButton(String title) {
         super(title);

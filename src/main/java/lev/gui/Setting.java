@@ -6,11 +6,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
+@SuppressWarnings("unused")
 public abstract class Setting<T> {
     protected T data;
-    protected String title;
-    protected LUserSetting<T> tie;
-    protected Boolean[] extraFlags;
+    protected final String title;
+    protected LUserSetting<?> tie;
+    protected final Boolean[] extraFlags;
 
     public Setting(String title_, T data_, Boolean[] extraFlags) {
         this(title_, extraFlags);
@@ -34,8 +35,8 @@ public abstract class Setting<T> {
         return (Color) this.data;
     }
 
-    public Enum getEnum() {
-        return (Enum) this.data;
+    public Enum<?> getEnum() {
+        return (Enum<?>) this.data;
     }
 
     public Float getFloat() {
@@ -51,7 +52,7 @@ public abstract class Setting<T> {
     }
 
     public ArrayList<String> getStrings() {
-        return (ArrayList) this.data;
+        return (ArrayList<String>) this.data;
     }
 
     public String getStr() {
@@ -66,7 +67,7 @@ public abstract class Setting<T> {
         return this.title;
     }
 
-    void tie(LUserSetting c) {
+    void tie(LUserSetting<?> c) {
         this.tie = c;
     }
 
@@ -89,7 +90,7 @@ public abstract class Setting<T> {
         b.write(this.title + ": " + this + "\n");
     }
 
-    public void readSetting(String input) throws IOException {
+    public void readSetting(String input) {
         this.parse(input.trim());
     }
 
@@ -107,7 +108,7 @@ public abstract class Setting<T> {
         } else if (this.getClass() != obj.getClass()) {
             return false;
         } else {
-            Setting<T> other = (Setting) obj;
+            Setting<?> other = (Setting<?>) obj;
             if (!Objects.equals(this.data, other.data)) {
                 return false;
             } else if (!Objects.equals(this.title, other.title)) {

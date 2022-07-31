@@ -4,9 +4,9 @@ import java.util.*;
 
 @SuppressWarnings("unused")
 public class LMergeMap<K, V> implements Iterable<V> {
-    Map<K, ArrayList<V>> map;
-    boolean sorted;
-    boolean unique;
+    final Map<K, ArrayList<V>> map;
+    final boolean sorted;
+    final boolean unique;
 
     public LMergeMap(Boolean sorted) {
         this(sorted, true);

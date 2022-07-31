@@ -14,7 +14,7 @@ public abstract class LHelpComponent extends LComponent {
     protected boolean followPos = true;
     protected Enum<?> saveTie;
     protected LSaveFile save;
-    protected String title;
+    protected final String title;
     protected int helpYoffset = 0;
 
     public LHelpComponent(String title) {

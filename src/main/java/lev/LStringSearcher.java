@@ -4,8 +4,8 @@ import java.io.BufferedInputStream;
 
 @SuppressWarnings("unused")
 public class LStringSearcher {
-    String[] targets;
-    int[] found;
+    final String[] targets;
+    final int[] found;
     Boolean mark;
 
     public LStringSearcher(String... targets_) {

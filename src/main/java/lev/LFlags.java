@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 @SuppressWarnings("unused")
 public class LFlags implements Serializable {
-    byte[] flags;
+    final byte[] flags;
 
     public LFlags(int size) {
         this.flags = new byte[size];
