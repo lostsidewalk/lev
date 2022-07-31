@@ -38,7 +38,7 @@ public class LFonts {
 
     static Font getFont(String path, float size) {
         try {
-            Font font = Font.createFont(0, LFonts.class.getResource(path).openStream());
+            Font font = Font.createFont(0, LFonts.class.getClassLoader().getResourceAsStream(path));
             return font.deriveFont(Font.PLAIN, size);
         } catch (FontFormatException | IOException var3) {
             return new Font("Serif", Font.PLAIN, 3);

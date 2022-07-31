@@ -11,14 +11,14 @@ public class LImages {
     }
 
     public static BufferedImage multipurpose() {
-        return create(LImages.class.getResource("multipurpose.png"));
+        return create(LImages.class.getClassLoader().getResource("multipurpose.png"));
     }
 
     public static BufferedImage arrow(boolean leftArrow, boolean dark) {
         if (leftArrow) {
-            return dark ? create(LImages.class.getResource("ArrowLeftDark.png")) : create(LImages.class.getResource("ArrowLeft.png"));
+            return dark ? create(LImages.class.getClassLoader().getResource("ArrowLeftDark.png")) : create(LImages.class.getClassLoader().getResource("ArrowLeft.png"));
         } else {
-            return dark ? create(LImages.class.getResource("ArrowRightDark.png")) : create(LImages.class.getResource("ArrowRight.png"));
+            return dark ? create(LImages.class.getClassLoader().getResource("ArrowRightDark.png")) : create(LImages.class.getClassLoader().getResource("ArrowRight.png"));
         }
     }
 
