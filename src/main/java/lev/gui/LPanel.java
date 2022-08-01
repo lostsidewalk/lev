@@ -77,7 +77,8 @@ public class LPanel extends JPanel implements Scrollable {
                 c.setLocation(x, y + this.spacing);
                 break;
             case Center:
-                if (c instanceof LComponent lc) {
+                if (c instanceof LComponent) {
+                    LComponent lc = (LComponent)c;
                     c.setLocation(lc.getCenter(), y + this.spacing);
                 } else {
                     c.setLocation(x - c.getWidth() / 2, y + this.spacing);
