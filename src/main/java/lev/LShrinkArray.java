@@ -1,6 +1,7 @@
 package lev;
 
 import java.io.File;
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 
 @SuppressWarnings("unused")
@@ -23,7 +24,7 @@ public class LShrinkArray extends LImport {
             this.buffer = ByteBuffer.wrap(rhs.getBytes(0, high));
         }
 
-        this.buffer.limit(high);
+        ((Buffer) this.buffer).limit(high);
     }
 
     public LShrinkArray(LShrinkArray rhs) {
@@ -45,7 +46,7 @@ public class LShrinkArray extends LImport {
     }
 
     public final void skip(int skip) {
-        this.buffer.position(this.buffer.position() + skip);
+        ((Buffer) this.buffer).position(((Buffer) this.buffer).position() + skip);
     }
 
     public void jumpBack(int amount) {
@@ -56,7 +57,7 @@ public class LShrinkArray extends LImport {
         int counter = 1;
         byte[] array = this.buffer.array();
 
-        for (int i = this.buffer.arrayOffset() + this.buffer.position(); i < this.buffer.limit() + this.buffer.arrayOffset(); ++i) {
+        for (int i = this.buffer.arrayOffset() + ((Buffer) this.buffer).position(); i < ((Buffer) this.buffer).limit() + this.buffer.arrayOffset(); ++i) {
             if (array[i] == delimiter) {
                 byte[] out = this.extract(counter - 1);
                 this.skip(1);
@@ -80,11 +81,11 @@ public class LShrinkArray extends LImport {
     }
 
     public void pos(long pos) {
-        this.buffer.position((int) pos);
+        ((Buffer) this.buffer).position((int) pos);
     }
 
     public long pos() {
-        return this.buffer.position();
+        return ((Buffer) this.buffer).position();
     }
 
     public void close() {
@@ -93,9 +94,9 @@ public class LShrinkArray extends LImport {
 
     public String toString() {
         long pos = this.pos();
-        this.buffer.position(0);
+        ((Buffer) this.buffer).position(0);
         int[] bytes = Ln.toIntArray(this.getAllBytes());
-        this.buffer.position((int) pos);
+        ((Buffer) this.buffer).position((int) pos);
         int count = 0;
         StringBuilder out = new StringBuilder();
 

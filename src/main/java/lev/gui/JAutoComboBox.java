@@ -13,7 +13,7 @@ public class JAutoComboBox extends JComboBox<Object> {
     public JAutoComboBox(List<?> list) {
         this.autoTextFieldEditor = new AutoTextFieldEditor(list);
         this.setEditable(true);
-        this.setModel(new DefaultComboBoxModel<>(list.toArray()) {
+        this.setModel(new DefaultComboBoxModel(list.toArray()) { // fix w java 9
             protected void fireContentsChanged(Object obj, int i, int j) {
                 if (!JAutoComboBox.this.isFired) {
                     super.fireContentsChanged(obj, i, j);

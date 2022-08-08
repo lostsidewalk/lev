@@ -3,6 +3,7 @@ package lev;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.channels.WritableByteChannel;
@@ -70,7 +71,7 @@ public class LInChannel extends LImport {
             Logger.getLogger(LInChannel.class.getName()).log(Level.SEVERE, null, var5);
         }
 
-        buf.flip();
+        ((Buffer) buf).flip();
         return buf;
     }
 

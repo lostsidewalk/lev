@@ -2,6 +2,8 @@ package lev;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FileUtils;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
@@ -16,7 +18,10 @@ import java.util.*;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
+import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
+
 @SuppressWarnings("unused")
+@Slf4j
 public class Ln {
     public Ln() {
     }
@@ -228,10 +233,9 @@ public class Ln {
     }
 
     public static boolean moveFile(File src, File dest, boolean eraseOldDirs) {
-        makeDirs(dest);
-        if (!src.renameTo(dest)) {
-            return false;
-        } else {
+        try {
+            makeDirs(dest);
+            FileUtils.moveFile(src, dest);
             if (eraseOldDirs) {
                 //noinspection ConstantConditions
                 while ((src = src.getParentFile()) != null && src.isDirectory() && src.listFiles().length == 0) {
@@ -239,8 +243,10 @@ public class Ln {
                     src.delete();
                 }
             }
-
             return true;
+        } catch (IOException e) {
+            log.error("Unable to move file due to: {}", e.getMessage());
+            return false;
         }
     }
 
@@ -972,13 +978,15 @@ public class Ln {
             Writer writer = new StringWriter();
             char[] buffer = new char[1024];
 
-            try (is) {
+            try {
                 Reader reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
 
                 int n;
                 while ((n = reader.read(buffer)) != -1) {
                     writer.write(buffer, 0, n);
                 }
+            } finally {
+                is.close();
             }
 
             return writer.toString();
@@ -1001,7 +1009,9 @@ public class Ln {
             StringBuilder out = new StringBuilder();
             StringBuilder tabs = new StringBuilder();
 
-            tabs.append("\t".repeat(Math.max(0, depth)));
+            for (int i = 0; i < Math.max(0, depth); i++) {
+                tabs.append("\t");
+            }
 
             boolean first;
             if (object.isJsonArray()) {
@@ -1078,7 +1088,9 @@ public class Ln {
     }
 
     public static ArrayList<String> toUpper(ArrayList<String> in) {
-        in.replaceAll(String::toUpperCase);
+        if (isNotEmpty(in)) {
+            in.replaceAll(s -> s == null ? null : s.toUpperCase());
+        }
 
         return in;
     }
@@ -1163,7 +1175,11 @@ public class Ln {
     }
 
     public static String getNAmount(int n, String s) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            sb.append(s);
+        }
 
-        return String.valueOf(s).repeat(Math.max(0, n));
+        return sb.toString();
     }
 }
